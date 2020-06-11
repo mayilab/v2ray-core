@@ -232,7 +232,7 @@ func (v *TimedUserValidator) BurnTaintFuse(userHash []byte) error {
 
 	pair, found := v.userHash[userHashFL]
 	if found {
-		if atomic.CompareAndSwapUint32(pair.taintedFuse, 0, 1) {
+		if atomic.CompareAndSwapUint32(pair.taintedFuse, 0, 0) {
 			return nil
 		}
 		return ErrTainted
